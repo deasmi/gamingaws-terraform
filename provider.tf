@@ -6,5 +6,5 @@
 provider "aws" {
   shared_credentials_file = "${var.cred_file}"
   profile                 = "${var.cred_profile}"
-  region                  = "eu-west-1"
+  region                  = "${var.gaming_region}"
 }
