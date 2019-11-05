@@ -8,7 +8,7 @@
 resource "aws_vpc" "gaming" {
   cidr_block = "${var.cidr_block_vpc}"
 
-  tags {
+  tags = {
     Name = "gaming_vpc"
   }
 }
@@ -17,7 +17,7 @@ resource "aws_subnet" "public" {
   vpc_id     = "${aws_vpc.gaming.id}"
   cidr_block = "${var.cidr_block_subnet_public}"
 
-  tags {
+  tags = {
     Name = "public_subnet"
   }
 }
@@ -26,7 +26,7 @@ resource "aws_subnet" "private" {
   vpc_id     = "${aws_vpc.gaming.id}"
   cidr_block = "${var.cidr_block_subnet_private}"
 
-  tags {
+  tags = {
     Name = "private_subnet"
   }
 }
@@ -35,7 +35,7 @@ resource "aws_internet_gateway" "pub_gw" {
   vpc_id     = "${aws_vpc.gaming.id}"
   depends_on = ["aws_vpc.gaming"]
 
-  tags {
+  tags = {
     Name = "gaming_gw"
   }
 }
@@ -48,7 +48,7 @@ resource "aws_route_table" "pub_rt" {
     gateway_id = "${aws_internet_gateway.pub_gw.id}"
   }
 
-  tags {
+  tags = {
     Name = "gaming_rt"
   }
 }

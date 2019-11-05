@@ -38,7 +38,7 @@ resource "aws_instance" "gaming_pc" {
   key_name                    = "${aws_key_pair.gaming_key.key_name}"
   user_data                   = "${data.template_file.user_data.rendered}"
 
-  tags {
+  tags = {
     Name = "Gaming PC"
   }
 }
